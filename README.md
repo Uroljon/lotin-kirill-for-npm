@@ -20,10 +20,10 @@ lotin-kirill-tarjimon [Node.js](https://nodejs.org/) v10+ ni talab qiladi..
 npm i lotin-kirill-tarjimon
 ```
 
-Loyihamizda esa quyidagicha import qilamiz: 
+Loyihamizda esa HTML faylimizga javaScript faylini ulaymiz: 
 
-```javascript
-let tarjimon = require("lotin-kirill-tarjimon");
+```html
+<script src="./node_modules/lotin-kirill-tarjimon/main.js"></script>
 ```
 
 > Izoh: https://uroljon.github.io/Khidirboev/projects/latin_cyrill/latin_cyrill.html tarjimon sayti. Shu sayt ham bir xil natija beradi. 
