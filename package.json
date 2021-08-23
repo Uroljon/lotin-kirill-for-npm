@@ -1,6 +1,6 @@
 {
   "name": "lotin-kirill-tarjimon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Translator for latin v/s cyrillic alphabets",
   "main": "main.js",
   "scripts": {
