@@ -25,7 +25,7 @@ var alphaRus = [
 
 function kirillga(originalMessage) {
     /*original textni olyapti */
-
+    var CyrillicTranslated = "";         //kirill ga o'girilgan xabar
     /*avval bu harf birikmalar o'zgartirilsin : */
     originalMessage = originalMessage.replace(/`/g, "\'");
     originalMessage = originalMessage.replace(/ʹ/g, "\'");
@@ -84,39 +84,40 @@ function kirillga(originalMessage) {
     let letterE = originalMessage.split(' ').map(Eliser).join(' ');
     originalMessage = letterE;
 
-    encrypt(originalMessage);//keyin tarjima uchun yubor :)
-};
-
-/*kirillga o'girish algoritmi :*/
-function encrypt(string) {
-    var CyrillicTranslated = "";         //kirill ga o'girilgan xabar
-    /*asosiy kirill ga o'girish algoritmi */
-    for (var i = 0; i < string.length; i++) {
-        for (var j = 0; j < alphaLatin.length; j++) {
+    /*kirillga o'girish algoritmi :*/
+    function encrypt(string) {
+        /*asosiy kirill ga o'girish algoritmi */
+        for (var i = 0; i < string.length; i++) {
+            for (var j = 0; j < alphaLatin.length; j++) {
 
 
-            if (string[i] == alphaLatin[j]) {
-                CyrillicTranslated += alphaRus[j]; break;
-            }
-            /*simvollarni va shuningdek o'zi kirill alifbosidagi harflarni ham o'zgartirmaydi: */
-            else if ((string.charCodeAt(i) >= 9 && string.charCodeAt(i) <= 11) || (string.charCodeAt(i) > 32 && string.charCodeAt(i) < 39) || (string.charCodeAt(i) > 39 && string.charCodeAt(i) <= 64) || (string.charCodeAt(i) >= 91 && string.charCodeAt(i) < 96) || (string.charCodeAt(i) >= 123 && string.charCodeAt(i) <= 1300)) {
-                CyrillicTranslated += string[i]; break;
-                // alert("son simvol topdi"); 
-            }
+                if (string[i] == alphaLatin[j]) {
+                    CyrillicTranslated += alphaRus[j]; break;
+                }
+                /*simvollarni va shuningdek o'zi kirill alifbosidagi harflarni ham o'zgartirmaydi: */
+                else if ((string.charCodeAt(i) >= 9 && string.charCodeAt(i) <= 11) || (string.charCodeAt(i) > 32 && string.charCodeAt(i) < 39) || (string.charCodeAt(i) > 39 && string.charCodeAt(i) <= 64) || (string.charCodeAt(i) >= 91 && string.charCodeAt(i) < 96) || (string.charCodeAt(i) >= 123 && string.charCodeAt(i) <= 1300)) {
+                    CyrillicTranslated += string[i]; break;
+                    // alert("son simvol topdi"); 
+                }
 
-            else if (string.charCodeAt(i) === 32) { /* probelni necha bo'lsa shuncha qo'shadi :)*/
-                CyrillicTranslated += " "; break;
+                else if (string.charCodeAt(i) === 32) { /* probelni necha bo'lsa shuncha qo'shadi :)*/
+                    CyrillicTranslated += " "; break;
+                }
             }
         }
+        // console.log(CyrillicTranslated)
     }
+
+    encrypt(originalMessage);//keyin tarjima uchun yubor :)
     /*natijani return qiladi */
     return CyrillicTranslated;
-}
+
+};
 
 /*====================lotinga o'girish==============================*/
 
-/*original textni olyapti */
 function lotinga(CyrillicMessage) {
+    var LatinTranslated = "";           //lotin ga o'girilgan xabar
 
     function Eliser2(currentWord) {//bu e harfini nastroyka qiladi ;)
 
@@ -195,46 +196,27 @@ function lotinga(CyrillicMessage) {
     let letterE2 = CyrillicMessage.split(" ").map(Eliser2).join(' ');
     CyrillicMessage = letterE2;
 
-    decrypt(CyrillicMessage);
-};
+    /*lotinga o'girish algoritmi :*/
+    function decrypt(string) {
 
-/*lotinga o'girish algoritmi :*/
-function decrypt(string) {
-    var LatinTranslated = "";           //lotin ga o'girilgan xabar
-
-    for (var i = 0; i < string.length; i++) {
-        for (var j = 0; j < alphaRus.length; j++) {
-            /* lotinchaga o'tkazadi*/
-            if (string[i] == alphaRus[j]) {
-                LatinTranslated += alpha[j];
-            }
-            /*simvollar va lotin alfavitidagi so'zlar o'girilmaydi */
-            else if ((string.charCodeAt(i) >= 9 && string.charCodeAt(i) <= 11) || (string.charCodeAt(i) > 32 && string.charCodeAt(i) < 1000) || (string.charCodeAt(i) > 1300)) {
-                LatinTranslated += string[i]; break;
-            }
-            /* probelni necha bo'lsa shuncha qo'shadi :)*/
-            else if (string.charCodeAt(i) === 32) {
-                LatinTranslated += " "; break;
+        for (var i = 0; i < string.length; i++) {
+            for (var j = 0; j < alphaRus.length; j++) {
+                /* lotinchaga o'tkazadi*/
+                if (string[i] == alphaRus[j]) {
+                    LatinTranslated += alpha[j];
+                }
+                /*simvollar va lotin alfavitidagi so'zlar o'girilmaydi */
+                else if ((string.charCodeAt(i) >= 9 && string.charCodeAt(i) <= 11) || (string.charCodeAt(i) > 32 && string.charCodeAt(i) < 1000) || (string.charCodeAt(i) > 1300)) {
+                    LatinTranslated += string[i]; break;
+                }
+                /* probelni necha bo'lsa shuncha qo'shadi :)*/
+                else if (string.charCodeAt(i) === 32) {
+                    LatinTranslated += " "; break;
+                }
             }
         }
     }
+    decrypt(CyrillicMessage);
     /*natijani return qiladi */
-    console.log(LatinTranslated)
-
     return LatinTranslated;
-}
-
-/* bu kirill alfabiti codi
-var salomat = "Ў o' G' g' Ҳ ҳ X x Q q Sh sh ch Ch  –«‘ЕʻғўA";
-for(var i=0; i<=salomat.length; i++){
-console.log(salomat.charCodeAt(i));
-}
-for(var i=1000; i<=1300; i++){
-console.log(String.fromCharCode(i)+i);
-}
-
-*/
-/*  VM629:2 ʻ699   VM629:2 ʼ700   VM629:2 ʽ701  */
-// for(let i=1040; i<=1080; i++){
-//     console.log(i + " - char = > " + String.fromCharCode(i))
-// }
+};
