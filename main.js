@@ -238,5 +238,3 @@ console.log(String.fromCharCode(i)+i);
 // for(let i=1040; i<=1080; i++){
 //     console.log(i + " - char = > " + String.fromCharCode(i))
 // }
-
-export {kirillga, lotinga};
