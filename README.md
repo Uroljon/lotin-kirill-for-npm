@@ -1,9 +1,9 @@
 # lotin-kirill-tarjimon
 ### latin-cyrillic v/s cyrillic-latin converter
 
-[Github link](https://github.com/Uroljon/lotin-kirill-for-npm)
-
-[Website](https://uroljon.github.io/Khidirboev/projects/latin_cyrill/latin_cyrill.html)
+[go to Github link](https://github.com/Uroljon/lotin-kirill-for-npm)
+---
+[go to a Website](https://uroljon.github.io/Khidirboev/projects/latin_cyrill/latin_cyrill.html)
 
 ### Lotin alifbosidan kirill alifbosiga o'tkazish endi muammo emas. lotin-kirill-tarjimon paketidan foydalaning
 - qulay interfeys
